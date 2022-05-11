@@ -27,6 +27,13 @@ shinyServer(function(input, output) {
     short_words <- limit_letter(short_words, input$letter_3, 3)
     short_words <- limit_letter(short_words, input$letter_4, 4)
     short_words <- limit_letter(short_words, input$letter_5, 5)
+    
+    short_words <- limit_amber_letter(short_words, input$amber_letters_1, 1)
+    short_words <- limit_amber_letter(short_words, input$amber_letters_2, 2)
+    short_words <- limit_amber_letter(short_words, input$amber_letters_3, 3)
+    short_words <- limit_amber_letter(short_words, input$amber_letters_4, 4)
+    short_words <- limit_amber_letter(short_words, input$amber_letters_5, 5)
+    
     dead_letters <- unique(strsplit(input$deadLetters, split = "")[[1]])
     short_words <- remove_dead_letters(short_words, dead_letters)
     return(short_words)

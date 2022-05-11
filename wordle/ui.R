@@ -32,6 +32,15 @@ dashboardPage(
                 column(2, selectInput(inputId = "letter_5", choices = c('', LETTERS), label = NULL, width = "7ch")),
               ),
               fluidRow(
+                titlePanel("Amber Letters"),
+                #textInput(inputId = "attempt_1", label = NULL),
+                column(2, textInput(inputId = "amber_letters_1", label = NULL, width = "15ch")),
+                column(2, textInput(inputId = "amber_letters_2", label = NULL, width = "15ch")),
+                column(2, textInput(inputId = "amber_letters_3", label = NULL, width = "15ch")),
+                column(2, textInput(inputId = "amber_letters_4", label = NULL, width = "15ch")),
+                column(2, textInput(inputId = "amber_letters_5", label = NULL, width = "15ch")),
+              ),
+              fluidRow(
                 box(
                   textInput(inputId = "deadLetters", label = "Known dead letters")
                 ),

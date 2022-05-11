@@ -7,6 +7,26 @@ get_data_dir <- function(dir_path = './data') {
   return(dir_path)
 }
 
+limit_amber_letter <- function(words, raw_amber_letters, position) {
+  amber_letters <- unique(strsplit(raw_amber_letters, split = "")[[1]])
+  if(length(amber_letters > 0)){
+    amber_letters_regex <- paste0("[", paste0(amber_letters, collapse = "|"), "]")
+
+    neg_grep <- grep_pattern <- c(".", ".", ".", ".", ".")
+    neg_grep[position] <- amber_letters_regex
+    neg_grep <- paste0(neg_grep, collapse = "")
+    words <- words %>%
+      filter(!grepl(neg_grep, word))
+    
+    #pos_grep <- paste0('.*', amber_letters_regex, '.*', sep='')
+    pos_grep <- paste0(paste0('(?=.*', amber_letters, ')'), collapse = '')
+    words <- words %>%
+      filter(grepl(pos_grep, word, perl = TRUE))
+    
+  }
+  return(words)
+}
+
 limit_letter <- function(words, letter, position){
   if(toupper(letter) %in% LETTERS){
     grep_pattern <- c(".", ".", ".", ".", ".")
