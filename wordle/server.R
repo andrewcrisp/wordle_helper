@@ -8,19 +8,32 @@
 #
 
 library(shiny)
+library(dplyr)
+
+source('./utils.R')
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+  
+  words <- load_words()
+  words <- limit_word_size(words = words, num_chars = 5)
+  
+  short_words <- words
 
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
-    })
+  possible_words <- reactive({
+    short_words <- words
+    short_words <- limit_letter(short_words, input$letter_1, 1)
+    short_words <- limit_letter(short_words, input$letter_2, 2)
+    short_words <- limit_letter(short_words, input$letter_3, 3)
+    short_words <- limit_letter(short_words, input$letter_4, 4)
+    short_words <- limit_letter(short_words, input$letter_5, 5)
+    dead_letters <- unique(strsplit(input$deadLetters, split = "")[[1]])
+    short_words <- remove_dead_letters(short_words, dead_letters)
+    return(short_words)
+  })
+  
+  
+  
+  output$possible_words <- renderTable(head(possible_words()))
 
 })
