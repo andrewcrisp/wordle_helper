@@ -45,7 +45,8 @@ dashboardPage(
                 
                 box(
                   title = "Possible words",
-                  tableOutput(outputId = "possible_words")
+                  #tableOutput(outputId = "possible_words")
+                  dataTableOutput(outputId = "possible_words")
                 )
               )
       ),
@@ -53,8 +54,12 @@ dashboardPage(
       # Second tab content
       tabItem(tabName = "about",
               h2("Andrew's Wordle Helper"),
-              p("This is just a fun project to see how far I can push Wordle solutions."),
-              a("https://github.com/andrewcrisp/wordle_helper")
+              p("This is just a fun project to see how far I can push Wordle solutions.  See the code here:"),
+              a("https://github.com/andrewcrisp/wordle_helper"),
+              p("The words are collected from dwyl's English words repository."),
+              a("https://github.com/dwyl/english-words")
+              
+              
       )
     )
   )

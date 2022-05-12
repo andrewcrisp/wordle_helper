@@ -52,7 +52,7 @@ load_words <- function() {
   words_file <- file.path(data_dir, "words_alpha.txt")
   if (!file.exists(words_file)) {
     print(paste("Downloading file from:", url))
-    download.file(url, words_file)
+    #download.file(url, words_file)
   }
   words <- read.delim2(words_file, header=FALSE, sep='\n')
   colnames(words) <- "word"
