@@ -14,7 +14,7 @@ dashboardPage(
   dashboardHeader(title = "Wordle helper"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("App", tabName = "app"),
+      menuItem("App", tabName = "app", icon=icon("puzzle-piece")),
       menuItem("About", tabName = "about", icon = icon("th"))
     )
   ),
@@ -54,33 +54,10 @@ dashboardPage(
       
       # Second tab content
       tabItem(tabName = "about",
-              h2("Widgets tab content")
+              h2("Andrew's Wordle Helper"),
+              p("This is just a fun project to see how far I can push Wordle solutions."),
+              a("https://github.com/andrewcrisp/wordle_helper")
       )
     )
   )
-  
 )
-
-# # Define UI for application that draws a histogram
-# shinyUI(fluidPage(
-# 
-#     # Application title
-#     titlePanel("Wordle Helper"),
-# 
-#     # Sidebar with a slider input for number of bins
-#     sidebarLayout(
-#       
-#         sidebarPanel(
-#             sliderInput("bins",
-#                         "Number of bins:",
-#                         min = 1,
-#                         max = 50,
-#                         value = 30)
-#         ),
-# 
-#         # Show a plot of the generated distribution
-#         mainPanel(
-#             plotOutput("distPlot")
-#         )
-#     )
-# ))
