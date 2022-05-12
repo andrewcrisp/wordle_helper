@@ -12,7 +12,6 @@ library(dplyr)
 
 source('./utils.R')
 
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
   words <- load_words()
@@ -39,8 +38,5 @@ shinyServer(function(input, output) {
     return(short_words)
   })
   
-  
-  
   output$possible_words <- renderTable(head(possible_words()))
-
 })

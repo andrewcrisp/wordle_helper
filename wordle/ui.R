@@ -24,7 +24,6 @@ dashboardPage(
       tabItem(tabName = "app",
               fluidRow(
                 titlePanel("Confirmed Letters"),
-                #textInput(inputId = "attempt_1", label = NULL),
                 column(2, selectInput(inputId = "letter_1", choices = c('', LETTERS), label = NULL, width = "7ch")),
                 column(2, selectInput(inputId = "letter_2", choices = c('', LETTERS), label = NULL, width = "7ch")),
                 column(2, selectInput(inputId = "letter_3", choices = c('', LETTERS), label = NULL, width = "7ch")),
@@ -33,7 +32,6 @@ dashboardPage(
               ),
               fluidRow(
                 titlePanel("Amber Letters"),
-                #textInput(inputId = "attempt_1", label = NULL),
                 column(2, textInput(inputId = "amber_letters_1", label = NULL, width = "15ch")),
                 column(2, textInput(inputId = "amber_letters_2", label = NULL, width = "15ch")),
                 column(2, textInput(inputId = "amber_letters_3", label = NULL, width = "15ch")),

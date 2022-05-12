@@ -18,7 +18,6 @@ limit_amber_letter <- function(words, raw_amber_letters, position) {
     words <- words %>%
       filter(!grepl(neg_grep, word))
     
-    #pos_grep <- paste0('.*', amber_letters_regex, '.*', sep='')
     pos_grep <- paste0(paste0('(?=.*', amber_letters, ')'), collapse = '')
     words <- words %>%
       filter(grepl(pos_grep, word, perl = TRUE))
@@ -50,12 +49,8 @@ load_words <- function() {
   data_dir <- get_data_dir()
   url <- "https://github.com/dwyl/english-words/raw/master/words_alpha.txt"
   
-  #words_zip_file <- file.path(data_dir, "words_alpha.zip")
   words_file <- file.path(data_dir, "words_alpha.txt")
   if (!file.exists(words_file)) {
-    #if (!file.exists(words_zip_file)) {
-    #  download.file(url, words_zip_file)
-    #}
     print(paste("Downloading file from:", url))
     download.file(url, words_file)
   }
