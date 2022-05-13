@@ -40,13 +40,17 @@ dashboardPage(
               ),
               fluidRow(
                 box(
-                  textInput(inputId = "deadLetters", label = "Known dead letters")
+                  textInput(inputId = "deadLetters",
+                            label = "Known dead letters",
+                            width = "28ch"),
+                  width = 3
                 ),
                 
                 box(
                   title = "Possible words",
                   #tableOutput(outputId = "possible_words")
                   dataTableOutput(outputId = "possible_words")
+                  
                 )
               )
       ),
@@ -58,9 +62,7 @@ dashboardPage(
               a("https://github.com/andrewcrisp/wordle_helper"),
               p("The words are collected from dwyl's English words repository."),
               a("https://github.com/dwyl/english-words")
-              
-              
-      )
+              )
     )
   )
 )
